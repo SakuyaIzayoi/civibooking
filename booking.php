@@ -247,8 +247,9 @@ function booking_civicrm_navigationMenu( &$params ) {
   // skip adding menu if there is no administer menu
   if ($administerMenuId) {
     // get the maximum key under administer menu
-    $maxAdminMenuKey = max( array_keys($params[$administerMenuId]['child']));
+    $maxAdminMenuKey = _getMenuKeyMax($params);
     $nextAdminMenuKey = $maxAdminMenuKey+1;
+    $key = $nextAdminMenuKey;
     $params[$administerMenuId]['child'][$nextAdminMenuKey] =  array(
         'attributes' => array(
           'label' => ts('CiviBooking'),
@@ -262,7 +263,7 @@ function booking_civicrm_navigationMenu( &$params ) {
           'active' => 1
         ),
         'child' =>  array(
-        1 => array(
+        $key++ => array(
           'attributes' => array(
             'label' => ts('Manage Resources'),
             'name' => 'manage_resources',
@@ -276,7 +277,7 @@ function booking_civicrm_navigationMenu( &$params ) {
           ),
          'child' => null
         ),
-        2 => array(
+        $key++ => array(
           'attributes' => array(
             'label' => ts('Resource Configuration Set'),
             'name' => 'resource_config_set',
@@ -290,7 +291,7 @@ function booking_civicrm_navigationMenu( &$params ) {
           ),
          'child' => null
         ),
-        3 => array(
+        $key++ => array(
           'attributes' => array(
             'label' => ts('Additional Charges Item'),
             'name' => 'adhoc_charges_item',
@@ -304,7 +305,7 @@ function booking_civicrm_navigationMenu( &$params ) {
           ),
          'child' => null
         ),
-         4 => array(
+         $key++ => array(
             'attributes' => array(
               'label' => ts('Booking Status'),
               'name' => 'booking_status',
@@ -318,7 +319,7 @@ function booking_civicrm_navigationMenu( &$params ) {
             ),
            'child' => null
           ),
-          5 => array(
+          $key++ => array(
             'attributes' => array(
               'label' => ts('Resource Type'),
               'name' => 'resource_type',
@@ -332,7 +333,7 @@ function booking_civicrm_navigationMenu( &$params ) {
               ),
             'child' => null
           ),
-          6 => array(
+          $key++ => array(
             'attributes' => array(
               'label' => ts('Resource Criteria'),
               'name' => 'resource_criteria',
@@ -346,7 +347,7 @@ function booking_civicrm_navigationMenu( &$params ) {
             ),
             'child' => null
           ),
-          7 => array(
+          $key++ => array(
             'attributes' => array(
               'label' => ts('Size Unit'),
               'name' => 'size_unit',
@@ -360,7 +361,7 @@ function booking_civicrm_navigationMenu( &$params ) {
             ),
             'child' => null
           ),
-          8 => array(
+          $key++ => array(
             'attributes' => array(
               'label' => ts('Cancellation Charges'),
               'name' => 'cancellation_charges',
@@ -374,7 +375,7 @@ function booking_civicrm_navigationMenu( &$params ) {
             ),
             'child' => null
           ),
-          9 => array(
+          $key++ => array(
             'attributes' => array(
               'label' => ts('Booking Component Settings'),
               'name' => 'booking_component_settings',
@@ -422,7 +423,7 @@ function booking_civicrm_navigationMenu( &$params ) {
       'active' => 1
     ),
     'child' => array(
-      1 => array(
+      $key++ => array(
         'attributes' => array(
           'label' => ts('New Booking'),
           'name' => 'new_booking',
@@ -436,8 +437,8 @@ function booking_civicrm_navigationMenu( &$params ) {
         ),
       'child' => null
       ),
-      2 => $findBooking,
-      3 => array(
+      $key++ => $findBooking,
+      $key++ => array(
         'attributes' => array(
           'label' => ts('Day View'),
           'name' => 'day_view',
@@ -476,4 +477,14 @@ function booking_civicrm_navigationMenu( &$params ) {
   }
   */
 
+}
+
+function _getMenuKeyMax($menuArray) {
+  $max = array(max(array_keys($menuArray)));
+  foreach($menuArray as $v) { 
+    if (!empty($v['child'])) {
+      $max[] = _getMenuKeyMax($v['child']); 
+    }
+  }
+  return max($max);
 }
