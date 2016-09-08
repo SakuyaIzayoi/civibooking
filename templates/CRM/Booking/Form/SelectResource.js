@@ -238,7 +238,7 @@ cj(function ($) {
 
                         //get and set the text for the datepicker text fields for the booking creating window
                         var startDateTxt = [initStartDate.format("DD"), "/", month[initStartDate.months()], "/", initStartDate.years()].join("");
-                        var endDateTxt = [initStartDate.format("DD"), "/", month[initStartDate.months()], "/", initStartDate.years()].join("");
+                        var endDateTxt = [initEndDate.format("DD"), "/", month[initEndDate.months()], "/", initEndDate.years()].join("");
                         $("#start_date").val(startDateTxt);
                         $("#end_date").val(endDateTxt);
 
