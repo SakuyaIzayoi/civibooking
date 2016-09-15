@@ -281,6 +281,8 @@ cj(function ($) {
                 $(this).dialog('destroy');
             },
         });
+
+        this.callEvent("onLightbox",[id]);
     };
 
     //Click Save - "select-resource-save"
