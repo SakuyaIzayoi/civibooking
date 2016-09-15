@@ -271,6 +271,8 @@ cj(function ($) {
                             options: options,
                             first_option: ["- ", ts('select configuration'), " -"].join("")
                         }));
+
+                        scheduler.callEvent("onLightbox",[id]);
                     }
                 });
             },
@@ -282,7 +284,6 @@ cj(function ($) {
             },
         });
 
-        this.callEvent("onLightbox",[id]);
     };
 
     //Click Save - "select-resource-save"
