@@ -27,11 +27,6 @@
     {* No matches for submitted search request or viewing an empty result. *}
     <div class="messages status no-popup">
       <div class="icon inform-icon"></div>&nbsp;{ts}No matches found.{/ts}
-      <p>{ts}Booking Date={/ts} {$dayview_select_date}</p>
-      {ts}Suggestions:{/ts}
-      <ul>
-        <li>{ts}Try a different date{/ts}</li>
-      </ul>
     </div>
   {else}
     {include file="CRM/Booking/Form/Search/DayViewResults.tpl"}
