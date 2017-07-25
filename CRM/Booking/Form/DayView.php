@@ -10,6 +10,8 @@ require_once 'CRM/Core/Form.php';
 class CRM_Booking_Form_DayView extends CRM_Core_Form {
     
   function buildQuickForm() {
+    CRM_Utils_System::setTitle(ts('Day View'));
+
     // add form elements
     $this->addDate('dayview_select_date', ts('Select Booking Date'), TRUE, array('formatType' => 'activityDate' ));
 
