@@ -385,7 +385,12 @@ class CRM_Booking_Selector_Search extends CRM_Core_Selector_Base implements CRM_
             'id' => $result->booking_id,
             'cid' => $result->contact_id,
             'cxt' => $this->_context,
-          )
+          ),
+          'more',
+          FALSE,
+          $action,
+          'Booking',
+          $result->booking_id
         );
       }
       $rows[] = $row;
