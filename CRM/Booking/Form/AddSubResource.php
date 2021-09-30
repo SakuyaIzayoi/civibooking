@@ -265,25 +265,31 @@ class CRM_Booking_Form_AddSubResource extends CRM_Core_Form {
     }
     $loaded = TRUE;
 
-    CRM_Core_Resources::singleton()
+    // Based on from CRM_UF_Page_ProfileEditor::registerProfileScripts()
+    Civi::resources()
+      ->addScriptFile('civicrm.packages', 'backbone/json2.js', 100, 'html-header', FALSE)
+      ->addScriptFile('civicrm.packages', 'backbone/backbone.js', 120, 'html-header')
+      ->addScriptFile('civicrm.packages', 'backbone/backbone.marionette.js', 125, 'html-header', FALSE)
+      ->addScriptFile('civicrm.packages', 'backbone/backbone.collectionsubset.js', 125, 'html-header', FALSE)
+      ->addScriptFile('civicrm.packages', 'backbone-forms/distribution/backbone-forms.js', 130, 'html-header', FALSE)
+      ->addScriptFile('civicrm.packages', 'backbone-forms/distribution/adapters/backbone.bootstrap-modal.min.js', 140, 'html-header', FALSE)
+      ->addScriptFile('civicrm.packages', 'backbone-forms/distribution/editors/list.min.js', 140, 'html-header', FALSE)
+      ->addStyleFile('civicrm.packages', 'backbone-forms/distribution/templates/default.css', 140, 'html-header')
+      ->addScript('CRM.BB = Backbone.noConflict();', 300, 'html-header')
+      ->addStyleFile('civicrm', 'css/crm.designer.css', 140, 'html-header')
+      ->addScriptFile('civicrm', 'js/crm.backbone.js', 150);
 
+    Civi::resources()
       ->addStyleFile(E::LONG_NAME, 'css/booking.css', 92, 'page-header')
-
-      ->addScriptFile('civicrm', 'packages/backbone/json2.js', 100, 'html-header', FALSE)
       ->addScriptFile(E::LONG_NAME, 'packages/underscore.js', 110, 'html-header', FALSE)
-      ->addScriptFile('civicrm', 'packages/backbone/backbone.js', 120, 'html-header')
-      ->addScriptFile('civicrm', 'packages/backbone/backbone.marionette.js', 125, 'html-header', FALSE)
       ->addScriptFile('civicrm', 'packages/backbone/backbone.modelbinder.js', 125, 'html-header', FALSE)
-      ->addScriptFile('civicrm', 'js/crm.backbone.js', 130, 'html-header', FALSE)
       ->addScriptFile(E::LONG_NAME, 'js/vendor/moment.min.js', 120, 'html-header', FALSE)
-
       ->addScriptFile(E::LONG_NAME, 'js/booking/civicrm-moment-strftime.js', 140, 'html-header', FALSE)
-      ->addScriptFile(E::LONG_NAME, 'js/booking/add-sub-resource/app.js', 150, 'html-header')
-      ->addScriptFile(E::LONG_NAME, 'js/booking/common/views.js', 151, 'html-header', FALSE)
-      ->addScriptFile(E::LONG_NAME, 'js/booking/utils.js', 151, 'html-header', FALSE)
-      ->addScriptFile(E::LONG_NAME, 'js/booking/add-sub-resource/entities.js', 160, 'html-header')
-      ->addScriptFile(E::LONG_NAME, 'js/booking/add-sub-resource/view.js', 170, 'html-header');
-
+      ->addScriptFile(E::LONG_NAME, 'js/booking/add-sub-resource/app.js', 250, 'html-header')
+      ->addScriptFile(E::LONG_NAME, 'js/booking/common/views.js', 251, 'html-header', FALSE)
+      ->addScriptFile(E::LONG_NAME, 'js/booking/utils.js', 251, 'html-header', FALSE)
+      ->addScriptFile(E::LONG_NAME, 'js/booking/add-sub-resource/entities.js', 260, 'html-header')
+      ->addScriptFile(E::LONG_NAME, 'js/booking/add-sub-resource/view.js', 270, 'html-header');
 
     $templateDir = CRM_Extension_System::singleton()->getMapper()->keyToBasePath(E::LONG_NAME) . '/templates/';
     $region = CRM_Core_Region::instance('page-header');

@@ -192,17 +192,28 @@ class CRM_Booking_Form_SelectResource extends CRM_Core_Form {
     }
     $loaded = TRUE;
 
-    CRM_Core_Resources::singleton()
+    // Based on from CRM_UF_Page_ProfileEditor::registerProfileScripts()
+    Civi::resources()
+      ->addScriptFile('civicrm.packages', 'backbone/json2.js', 100, 'html-header', FALSE)
+      ->addScriptFile('civicrm.packages', 'backbone/backbone.js', 120, 'html-header')
+      ->addScriptFile('civicrm.packages', 'backbone/backbone.marionette.js', 125, 'html-header', FALSE)
+      ->addScriptFile('civicrm.packages', 'backbone/backbone.collectionsubset.js', 125, 'html-header', FALSE)
+      ->addScriptFile('civicrm.packages', 'backbone-forms/distribution/backbone-forms.js', 130, 'html-header', FALSE)
+      ->addScriptFile('civicrm.packages', 'backbone-forms/distribution/adapters/backbone.bootstrap-modal.min.js', 140, 'html-header', FALSE)
+      ->addScriptFile('civicrm.packages', 'backbone-forms/distribution/editors/list.min.js', 140, 'html-header', FALSE)
+      ->addStyleFile('civicrm.packages', 'backbone-forms/distribution/templates/default.css', 140, 'html-header')
+      ->addScript('CRM.BB = Backbone.noConflict();', 300, 'html-header')
+      ->addStyleFile('civicrm', 'css/crm.designer.css', 140, 'html-header')
+      ->addScriptFile('civicrm', 'js/crm.backbone.js', 150);
+
+    Civi::resources()
       ->addStyleFile('uk.co.compucorp.civicrm.booking', 'css/schedule.css', 91, 'page-header')
       ->addStyleFile('uk.co.compucorp.civicrm.booking', 'js/vendor/dhtmlxScheduler/sources/dhtmlxscheduler.css', 92, 'page-header')
       ->addStyleFile('uk.co.compucorp.civicrm.booking', 'css/booking.css', 92, 'page-header')
 
-      ->addScriptFile('uk.co.compucorp.civicrm.booking', 'packages/underscore.js', 110, 'html-header', FALSE)
-      ->addScriptFile('civicrm', 'packages/backbone/backbone.js', 120, 'html-header')
-      ->addScriptFile('uk.co.compucorp.civicrm.booking', 'js/vendor/moment.min.js', 120, 'html-header', FALSE)
-      ->addScriptFile('civicrm', 'packages/backbone/backbone.marionette.js', 125, 'html-header', FALSE)
       ->addScriptFile('civicrm', 'packages/backbone/backbone.modelbinder.js', 125, 'html-header', FALSE)
-      ->addScriptFile('civicrm', 'js/crm.backbone.js', 130, 'html-header', FALSE)
+      ->addScriptFile('uk.co.compucorp.civicrm.booking', 'packages/underscore.js', 110, 'html-header', FALSE)
+      ->addScriptFile('uk.co.compucorp.civicrm.booking', 'js/vendor/moment.min.js', 120, 'html-header', FALSE)
 
       ->addScriptFile('uk.co.compucorp.civicrm.booking', 'js/booking/add-sub-resource/app.js', 140, 'html-header')
       ->addScriptFile('uk.co.compucorp.civicrm.booking', 'js/booking/utils.js', 141, 'html-header', FALSE)
