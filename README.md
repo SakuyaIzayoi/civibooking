@@ -3,8 +3,10 @@
 This is a fork of the [CiviBooking extension by
 Compucorp](https://github.com/compucorp/civibooking). We aim to provide support
 for CiviCRM 5.40 (and later) and to add the possiblity for users to create
-their own bookings. We will try to contribute and keep in sync with upstream
-as much as possible. For more information about Coop Symbiotic, see:
+their own bookings. It also integrates a lot of work by other contributors, such
+as [MJW Consulting](https://github.com/mjwconsult/civibooking/) and others. We
+will try to contribute and keep in sync with upstream as much as possible. For
+more information about Coop Symbiotic, see:
 https://www.symbiotic.coop/en
 
 ### What is CiviBooking?
