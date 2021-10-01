@@ -265,6 +265,7 @@ class CRM_Booking_Upgrader extends CRM_Booking_Upgrader_Base {
         'permission' => 'administer CiviBooking,create and update bookings,view all bookings',
         'operator' => NULL,
         'separator' => NULL,
+        'icon' => 'crm-i fa-calendar',
       ],
       [
         'label' => ts('Find Bookings'),
