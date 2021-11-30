@@ -244,10 +244,8 @@ cj(function ($) {
                         $("#start_date").val(startDateTxt);
                         $("#end_date").val(endDateTxt);
 
-                        var startTimeTxt = [initStartDate.hours() < 10 ? '0' + initStartDate.hours() : initStartDate.hours(), ":", initStartDate.minute() < 10 ? '0' +
-                                    initStartDate.minute() : initStartDate.minute()].join("");
-                        var endTimeTxt = [initEndDate.hours() < 10 ? '0' + initEndDate.hours() : initEndDate.hours(), ":", initEndDate.minute() < 10 ? '0' +
-                                    initEndDate.minute() : initEndDate.minute()].join("");
+                        var startTimeTxt = initStartDate.format("h:mma");
+                        var endTimeTxt = initEndDate.format("h:mma");
                         $("#start_time").val(startTimeTxt);
                         $("#end_time").val(endTimeTxt);
 

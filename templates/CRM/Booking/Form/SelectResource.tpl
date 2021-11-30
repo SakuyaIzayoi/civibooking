@@ -117,7 +117,7 @@
       section_autoheight: false,
       name: "timeline",
       x_unit: "minute",
-      x_date: "%H:%i",
+      x_date: "%h:%i%a",
       x_step: {/literal}{$xStep}{literal}, //time period
       x_size: {/literal}{$xSize}{literal}, // side of block from start time to end time
       x_start: {/literal}{$xStart}{literal},
